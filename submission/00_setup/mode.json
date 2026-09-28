@@ -1,0 +1,21 @@
+{
+  "members": [
+    "do",
+    "ducanh",
+    "minh"
+  ],
+  "assignments": {
+    "do": "B4-edge",
+    "ducanh": "B1-dense",
+    "minh": "B3-mid"
+  },
+  "self": "do",
+  "slice": "B4-edge",
+  "degrade": [
+    "k12"
+  ],
+  "current_slice": "C0",
+  "support_prefill": false,
+  "support_slice": "",
+  "prefill_box_ids": []
+}

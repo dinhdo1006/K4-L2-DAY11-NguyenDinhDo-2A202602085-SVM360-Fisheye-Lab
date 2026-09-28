@@ -1,9 +1,9 @@
 camera_id,slice_type,frames,risk,rationale
-front,normal,,TODO,TODO
-front,hard,,TODO,TODO
-rear,normal,,TODO,TODO
-rear,hard,,TODO,TODO
-left,normal,,TODO,TODO
-left,hard,,TODO,TODO
-right,normal,,TODO,TODO
-right,hard,,TODO,TODO
+front,normal,30,Vật ở xa và nhỏ sát ngưỡng H trước xe; ThreeWheeler/xe máy phổ biến,Camera nhìn hướng di chuyển có nhiều vật nhất; normal đủ lớn để phủ ngày/đêm và đường đô thị/nông thôn
+front,hard,35,Cụm xe máy + người đi bộ dày đặc; người lái xe hai bánh (R03); lóa nắng ngược sáng,Bài ADASIND cho thấy lỗi dồn vào frame dày đặc (258420) và model tách rider; hard front được nhiều nhất
+rear,normal,20,Xe bám đuôi; thân xe ego chiếm đáy ảnh,Ít vật hơn front; chủ yếu kiểm ego_body và lens_border ổn định
+rear,hard,25,Xe áp sát khi lùi/đỗ; vật thấp gần xe bị méo mạnh ở tâm-đáy; đèn pha ban đêm,Ca lùi đỗ rủi ro cao dù ít frame; cần đủ mẫu đêm/mưa
+left,normal,20,Người đi bộ và xe máy trên vỉa hè bên trái,Camera bên có nhiều vật cắt vòng kính (truncated) và edge_zone
+left,hard,25,Vật ở seam front-left và rear-left xuất hiện trên hai camera; vật sát rìa kính,Seam là ca không có trong ADASIND một camera; cần đủ mẫu để viết policy cross-camera
+right,normal,20,Xe vượt và xe đỗ bên phải,Đối xứng với left để so sánh độ phủ hai bên
+right,hard,25,Xe vượt ở seam front-right; vật bị gương/thân xe che; ngược sáng,Đủ ca seam và che khuất bên phải; tổng hard 110 > normal 90 vì mục tiêu là tìm lỗi chứ không đo tỷ lệ

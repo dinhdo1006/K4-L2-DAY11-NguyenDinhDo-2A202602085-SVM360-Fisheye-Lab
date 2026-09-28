@@ -1,0 +1,7 @@
+# Guideline patch
+
+- **Rule mới đề xuất:** R05b — `edge_zone`: đặt `edge_zone=true` khi **tâm box** nằm trong vành ngoài của vòng kính, tức khoảng cách từ tâm box tới tâm vòng kính > 0,8 × bán kính vòng kính (đo trên ảnh gốc, dùng vòng kính của polygon `lens_border` đã import). Ngược lại để `false`. `edge_zone` là thuộc tính vị trí hình học, độc lập với `truncated` (bị vòng kính cắt) và `occluded` (bị vật khác che). Ví dụ: 310008 bốn người đi bộ bên trái (x≈17–153, y≈863–1033) nằm sát rìa trái vòng kính → `edge_zone=true`; ThreeWheeler L1 ở giữa ảnh (x254–366) → `false`.
+- **Áp dụng cho:** attribute `edge_zone` của sáu class động (`Bus`, `Bike`, `Car`, `Pedestrian`, `Truck`, `ThreeWheeler`); không áp dụng cho `ignore_region`.
+- **Vì sao luật hiện tại (`docs/02-rules-vi.md`) không đủ:** `labels.json` có attribute `edge_zone` nhưng rules v1.0.0 chỉ định nghĩa `truncated` và `occluded` (R05). Kết quả: trong slice B4-edge, teaching reference đặt `edge_zone=true` cho 4 Pedestrian ở 310008 và cho ThreeWheeler/Pedestrian mép trái ở 258420, còn mình để `false` cho tất cả — 6 cặp `mismatching_attributes` trong `r3_diag/local_quality_conflicts.csv` đều chỉ khác `edge_zone`. Không có luật thì không ai phân xử được bên nào đúng (findings `L4+R3+M1` và `L7+R1`, why=E2_guideline_gap).
+- **`rules_version` mới:** v1.0.0 → v1.1.0
+- **Hiệu lực từ:** round `rework` của slice tiếp theo; các export đã khóa trước đó giữ nguyên, khác biệt `edge_zone` ghi `keep_with_reason` thay vì sửa ngầm.

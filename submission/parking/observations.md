@@ -1,6 +1,6 @@
 # Quan sát vạch ô đỗ
 
-- Hai vạch `parking_line` đã vẽ (mô tả vị trí trong ảnh): TODO
-- Một vạch/dấu sơn hoặc biên **không** vẽ, và vì sao: TODO
-- Polygon `free_space` dừng ở đâu; có phần bị che nào không: TODO
-- Ca chưa chắc cần hỏi người soát (nếu không có, ghi “không có”): TODO
+- Hai vạch `parking_line` đã vẽ (mô tả vị trí trong ảnh): (1) vạch chia ô ở tiền cảnh giữa-dưới, từ (407,650) xuống (532,720) — đoạn sơn trắng ngăn hai ô đỗ gần camera; (2) vạch chia ô tiền cảnh bên phải, từ (693,623) tới mép phải (960,685). Ngoài ra đã vẽ các vạch chia ô của dãy giữa (ví dụ (248,563)→(174,521), (421,554)→(283,518), (579,544)→(399,516)) và các mẩu vạch ngắn ở dãy xa; tổng 22 polyline, mỗi polyline dừng ở chỗ sơn mờ/kết thúc, không nối qua phần không thấy.
+- Một vạch/dấu sơn hoặc biên **không** vẽ, và vì sao: không vẽ mép bãi/chân hàng rào phía xa (y≈465) vì đó là biên của bãi, không chia ô đỗ nào; không vẽ vệt ố/miếng vá sáng màu ở đáy ảnh (≈x340–390, y≈715) vì không phải vạch sơn chia ô.
+- Polygon `free_space` dừng ở đâu; có phần bị che nào không: polygon bao dải mặt đường trống phía xa (y≈462–508, x≈6–762), dừng trước hàng rào và dừng ở x≈762 nơi mặt đường khuất dần; không đi qua chiếc xe đỏ (x≈193–219, cạnh trên polygon vòng qua xe). Vùng lối xe chạy tiền cảnh bị vẽ nhầm bằng polyline nên không được tính là `free_space`.
+- Ca chưa chắc cần hỏi người soát: vạch ngang dài xuyên ảnh (0,542)→(960,507) được gán `parking_line` vì là vạch đầu ô nối các vạch chia của dãy giữa, nhưng nó cũng có thể được xem là vạch phân cách lối xe chạy; polygon `free_space` phía xa có chứa vài mẩu vạch chia ô ngắn của dãy xa (x≈15–75), cần xác nhận đó là lối chạy hay vẫn là ô đỗ.
